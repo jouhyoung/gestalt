@@ -16,9 +16,9 @@ const aspectRatio = (width, height) => width / height;
 
 type Props = {|
   children?: React.Node,
-  contentAspectRatio: number,
-  height: number,
-  width: number,
+    contentAspectRatio: number,
+      height: number,
+        width: number,
 |};
 
 export default function Letterbox({
@@ -26,6 +26,7 @@ export default function Letterbox({
   contentAspectRatio,
   height,
   width,
+  marginTop,
 }: Props) {
   const viewportAspectRatio = aspectRatio(width, height);
 
@@ -40,7 +41,7 @@ export default function Letterbox({
     contentHeight = height;
   }
 
-  const offsetTop = (contentHeight - height) / -2;
+  const offsetTop = marginTop || (contentHeight - height) / -2;
   const offsetLeft = (contentWidth - width) / -2;
 
   return (
@@ -59,4 +60,5 @@ Letterbox.propTypes = {
   contentAspectRatio: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
+  marginTop: PropTypes.number,
 };
